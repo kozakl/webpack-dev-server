@@ -157,7 +157,9 @@ const onSocketMsg = {
     sendMsg('Errors', strippedErrors);
     for (let i = 0; i < strippedErrors.length; i++) { log.error(strippedErrors[i]); }
     if (useErrorOverlay) overlay.showMessage(errors);
-    initial = false;
+    
+    if (initial) return initial = false; // eslint-disable-line no-return-assign
+    reloadApp();
   },
   error(error) {
     log.error(error);
