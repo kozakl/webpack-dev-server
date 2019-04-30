@@ -185,7 +185,10 @@ const onSocketMsg = {
     if (useErrorOverlay) {
       overlay.showMessage(errors);
     }
-    initial = false;
+    if (initial) {
+      return (initial = false);
+    } // eslint-disable-line no-return-assign
+    reloadApp();
   },
   error(error) {
     log.error(error);
